@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        averta: ['"Averta"', 'system-ui', '-apple-system', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -56,6 +59,16 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+          muted: "hsl(var(--sidebar-muted))",
+          "section-title": "hsl(var(--sidebar-section-title))",
+        },
+        badge: {
+          beta: "hsl(var(--badge-beta))",
+          "beta-foreground": "hsl(var(--badge-beta-foreground))",
+          caution: "hsl(var(--badge-caution))",
+          "caution-foreground": "hsl(var(--badge-caution-foreground))",
+          notification: "hsl(var(--badge-notification))",
+          "notification-foreground": "hsl(var(--badge-notification-foreground))",
         },
       },
       borderRadius: {
@@ -65,20 +78,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
