@@ -23,7 +23,7 @@ const Index = () => {
         <Text as="h1" size="xxl" family="heading" ccMargin="0 0 m">
           Hello, World!
         </Text>
-        <Text as="p" size="m" color="subtle">
+        <Text as="p" size="m" color="subtle" family="heading">
           Welcome to your fake CompanyCam application!
         </Text>
       </MainContent>
