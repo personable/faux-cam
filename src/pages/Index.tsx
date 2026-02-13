@@ -25,13 +25,13 @@ const Index = () => {
       <Navigation />
       <MainContent>
         <Text as="h1" size="xxl" family="heading" ccMargin="0 0 l">
-          Leads
+          Faux Cam
         </Text>
         <Button color="primary" onClick={() => setIsModalOpen(true)} ccMargin="0 0 l">
           Open Modal
         </Button>
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="New Lead" size="small">
-          <InputText id="lead-name" label="Lead Name" placeholder="Enter a name" />
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Modal" size="small">
+          <InputText id="lead-name" label="Name" placeholder="Enter a name" />
         </Modal>
       </MainContent>
     </AppContainer>
