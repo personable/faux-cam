@@ -1,5 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { Text, Table, TimeStamp } from "@companycam/slab-web";
+import { Text, Table, TimeStamp, Button, Modal, InputText } from "@companycam/slab-web";
 import { createColumnHelper } from "@tanstack/react-table";
 import { Navigation } from "@/components/Navigation";
 
@@ -46,6 +47,8 @@ const columns = [
 ];
 
 const Index = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <AppContainer>
       <Navigation />
@@ -53,12 +56,27 @@ const Index = () => {
         <Text as="h1" size="xxl" family="heading" ccMargin="0 0 l">
           Leads
         </Text>
+        <Button color="primary" onClick={() => setIsModalOpen(true)} ccMargin="0 0 l">
+          Open Modal
+        </Button>
         <Table
           defaultData={data}
           columns={columns}
           columnSizes={["medium", "medium", "medium"]}
           defaultSortedColumns={[{ id: "name", desc: false }]}
         />
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title="New Lead"
+          size="small"
+        >
+          <InputText
+            id="lead-name"
+            label="Lead Name"
+            placeholder="Enter a name"
+          />
+        </Modal>
       </MainContent>
     </AppContainer>
   );
