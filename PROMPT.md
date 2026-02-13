@@ -1,4 +1,4 @@
-For all designs I ask you to make, have them be beautiful, not cookie cutter. The goal of this app is to prototype an actual app, so keep the interactions simple and don't wire things up unless instructed.
+The goal of this app is to prototype an actual app, so keep the interactions simple and don't wire things up unless instructed.
 
 Always use the @companycam/slab-web import for UI components. If you can't find a component in @companycam/slab-web, it's ok to import another package for that component. Import react-select if you need a select/autocomplete.
 
