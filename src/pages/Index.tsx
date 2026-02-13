@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Text } from '@companycam/slab-web';
-import { Navigation } from '@/components/Navigation';
+import styled from "styled-components";
+import { Text } from "@companycam/slab-web";
+import { Navigation } from "@/components/Navigation";
 
 const AppContainer = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ const Index = () => {
           Hello, World!
         </Text>
         <Text as="p" size="m" color="subtle">
-          Welcome to your CompanyCam application. The navigation is ready to use.
+          Welcome to your fake CompanyCam application!
         </Text>
       </MainContent>
     </AppContainer>
