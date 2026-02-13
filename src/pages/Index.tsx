@@ -6,11 +6,12 @@ const AppContainer = styled.div`
   display: flex;
   height: 100vh;
   overflow: hidden;
+  
 `;
 
 const MainContent = styled.main`
   flex: 1;
-  background: var(--cc_color_background_2);
+  background: var(--cc_color_background_1);
   padding: var(--cc_size_spacing_xl);
   overflow-y: auto;
 `;
