@@ -1,18 +1,33 @@
-import { Navigation } from "@/components/Navigation";
+import styled from 'styled-components';
+import { Text } from '@companycam/slab-web';
+import { Navigation } from '@/components/Navigation';
+
+const AppContainer = styled.div`
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+`;
+
+const MainContent = styled.main`
+  flex: 1;
+  background: var(--cc_color_background_2);
+  padding: var(--cc_size_spacing_xl);
+  overflow-y: auto;
+`;
 
 const Index = () => {
   return (
-    <div className="flex h-screen overflow-hidden">
+    <AppContainer>
       <Navigation />
-      <main className="flex-1 bg-background p-8 overflow-y-auto">
-        <h1 className="text-3xl font-bold text-foreground mb-3">
+      <MainContent>
+        <Text as="h1" size="xxl" family="heading" ccMargin="0 0 m">
           Hello, World!
-        </h1>
-        <p className="text-base text-muted-foreground">
+        </Text>
+        <Text as="p" size="m" color="subtle">
           Welcome to your CompanyCam application. The navigation is ready to use.
-        </p>
-      </main>
-    </div>
+        </Text>
+      </MainContent>
+    </AppContainer>
   );
 };
 

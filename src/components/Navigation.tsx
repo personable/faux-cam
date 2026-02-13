@@ -1,143 +1,273 @@
-import {
-  Search,
-  PlusCircle,
-  Bell,
-  Diamond,
-  MapPin,
-  Users,
-  Image,
-  User,
-  UsersRound,
-  FileText,
-  ClipboardCheck,
-  DollarSign,
-  Map,
-  Star,
-  LayoutGrid,
-  Puzzle,
-  FolderOpen,
-  Gift,
-  ArrowLeftRight,
-  MessageCircle,
-  FlaskConical,
-} from "lucide-react";
-import { Input } from "@/components/ui/input";
+import styled from 'styled-components';
+import { ButtonIconCondensed, Avatar, Text, Badge, InputText } from '@companycam/slab-web';
 
-interface MenuItemProps {
-  icon: React.ReactNode;
-  label: string;
-  badge?: { text: string; variant: "beta" | "caution" };
-}
+const NavContainer = styled.nav`
+  width: 250px;
+  height: 100dvh;
+  background: var(--cc_color_background_1);
+  border-right: 1px solid var(--cc_color_border_default);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+`;
 
-function NavMenuItem({ icon, label, badge }: MenuItemProps) {
-  return (
-    <button className="w-full flex items-center gap-3 px-4 py-2 border-none bg-transparent text-sidebar-foreground cursor-pointer text-left text-sm transition-colors hover:bg-sidebar-accent rounded-none">
-      <span className="w-5 h-5 text-sidebar-muted flex items-center justify-center">
-        {icon}
-      </span>
-      <span className="flex-1">{label}</span>
-      {badge && (
-        <span
-          className={`text-[11px] font-semibold px-1.5 py-0.5 rounded-sm flex items-center gap-1 ${
-            badge.variant === "beta"
-              ? "bg-badge-beta text-badge-beta-foreground"
-              : "bg-badge-caution text-badge-caution-foreground"
-          }`}
-        >
-          {badge.variant === "beta" && <FlaskConical size={10} />}
-          {badge.text}
-        </span>
-      )}
-    </button>
-  );
-}
+const NavHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--cc_size_spacing_m);
+  border-bottom: 1px solid var(--cc_color_border_default);
+`;
 
-function NavSection({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="mb-4">
-      <div className="px-4 py-1.5 mb-1">
-        <h2 className="text-xs font-bold text-sidebar-section-title uppercase tracking-wider">
-          {title}
-        </h2>
-      </div>
-      {children}
-    </div>
-  );
-}
+const LogoImage = styled.img`
+  width: 32px;
+  height: 32px;
+  display: block;
+`;
+
+const NavActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--cc_size_spacing_xs);
+`;
+
+const NotificationWrapper = styled.div`
+  position: relative;
+  margin-inline-end: var(--cc_size_spacing_s);
+`;
+
+const NotificationBadge = styled.div`
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4e4e;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+`;
+
+const SearchContainer = styled.div`
+  padding: var(--cc_size_spacing_m) var(--cc_size_spacing_m) 0 var(--cc_size_spacing_m);
+`;
+
+const NavContent = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--cc_size_spacing_m) 0;
+`;
+
+const NavSection = styled.div`
+  margin-bottom: var(--cc_size_spacing_l);
+`;
+
+const SectionTitle = styled.div`
+  padding: var(--cc_size_spacing_s) var(--cc_size_spacing_m);
+  margin-bottom: var(--cc_size_spacing_xs);
+  font-size: var(--cc_size_text_xs);
+`;
+
+const MenuItem = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--cc_size_spacing_m);
+  padding: var(--cc_size_spacing_s) var(--cc_size_spacing_m);
+  border: none;
+  background: transparent;
+  color: var(--cc_color_link_subtle);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--cc_color_background_2);
+  }
+`;
+
+const MenuIcon = styled.i`
+  font-size: 20px;
+  color: var(--cc_color_text_subtle);
+  width: 20px;
+`;
+
+const MenuLabel = styled.span`
+  flex: 1;
+  font-size: 14px;
+`;
+
+const NavFooter = styled.div`
+  border-top: 1px solid var(--cc_color_border_default);
+  padding: var(--cc_size_spacing_m) 0;
+`;
 
 export function Navigation() {
   return (
-    <nav className="w-[250px] h-dvh bg-sidebar border-r border-sidebar-border flex flex-col shrink-0">
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-sidebar-border">
-        <img
+    <NavContainer className="dark-environment">
+      <NavHeader>
+        <LogoImage
           src="https://assets.c.companycam.com/vite/assets/CC-Logo-Mark-DqAcdOr2.png"
           alt="CompanyCam"
-          className="w-8 h-8"
         />
-        <div className="flex items-center gap-1">
-          <button className="p-1.5 rounded-full text-sidebar-foreground hover:bg-sidebar-accent transition-colors">
-            <PlusCircle size={20} />
-          </button>
-          <div className="relative mr-1">
-            <button className="p-1.5 rounded-full text-sidebar-foreground hover:bg-sidebar-accent transition-colors">
-              <Bell size={20} />
-            </button>
-            <span className="absolute -top-1 -right-1 bg-badge-notification text-badge-notification-foreground rounded-full w-[18px] h-[18px] flex items-center justify-center text-[11px] font-semibold">
-              2
-            </span>
-          </div>
-          <img
-            src="https://i.pravatar.cc/150?img=32"
-            alt="John Doe"
-            className="w-7 h-7 rounded-full object-cover"
+
+        <NavActions>
+          <ButtonIconCondensed
+            iconName="plus-circle-outline"
+            accessibilityLabel="Add new item"
+            color="subtle"
+            size="large"
+            shape="circle"
           />
-        </div>
-      </div>
 
-      {/* Search */}
-      <div className="px-4 pt-3">
-        <div className="relative">
-          <Search size={16} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-sidebar-muted" />
-          <Input
-            placeholder="Search"
-            className="pl-8 bg-sidebar-accent border-sidebar-border text-sidebar-foreground placeholder:text-sidebar-muted h-9 text-sm focus-visible:ring-sidebar-ring"
+          <NotificationWrapper>
+            <ButtonIconCondensed
+              iconName="bell-outline"
+              accessibilityLabel="Notifications"
+              color="subtle"
+              size="large"
+              shape="circle"
+            />
+            <NotificationBadge>2</NotificationBadge>
+          </NotificationWrapper>
+
+          <Avatar
+            fullName="John Doe"
+            imageSrc="https://i.pravatar.cc/150?img=32"
+            size="small"
           />
-        </div>
-      </div>
+        </NavActions>
+      </NavHeader>
 
-      {/* Content */}
-      <div className="flex-1 overflow-y-auto py-3">
-        <NavSection title="CompanyCam">
-          <NavMenuItem icon={<Diamond size={18} />} label="Leads" badge={{ text: "Beta", variant: "beta" }} />
-          <NavMenuItem icon={<MapPin size={18} />} label="Projects" />
-          <NavMenuItem icon={<Users size={18} />} label="Customers" badge={{ text: "Beta", variant: "beta" }} />
-          <NavMenuItem icon={<Image size={18} />} label="Photos" />
-          <NavMenuItem icon={<User size={18} />} label="Users" />
-          <NavMenuItem icon={<UsersRound size={18} />} label="User Groups" />
-          <NavMenuItem icon={<FileText size={18} />} label="Reports" />
-          <NavMenuItem icon={<ClipboardCheck size={18} />} label="Checklists" />
-          <NavMenuItem icon={<DollarSign size={18} />} label="Payments" badge={{ text: "NEW", variant: "caution" }} />
-          <NavMenuItem icon={<Map size={18} />} label="Map" />
+      <SearchContainer>
+        <InputText
+          id="nav-search"
+          label="Search"
+          hideLabel
+          placeholder="Search"
+          type="search"
+        />
+      </SearchContainer>
+
+      <NavContent>
+        <NavSection>
+          <SectionTitle>
+            <Text as="h2" size="xs" weight={700} color="default" family="heading">
+              CompanyCam
+            </Text>
+          </SectionTitle>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-diamond-stone" />
+            <MenuLabel>Leads</MenuLabel>
+            <Badge size="small" iconName="flask">Beta</Badge>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-map-marker-outline" />
+            <MenuLabel>Projects</MenuLabel>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-account-group-outline" />
+            <MenuLabel>Customers</MenuLabel>
+            <Badge size="small" iconName="flask">Beta</Badge>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-image-outline" />
+            <MenuLabel>Photos</MenuLabel>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-account-outline" />
+            <MenuLabel>Users</MenuLabel>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-account-multiple-outline" />
+            <MenuLabel>User Groups</MenuLabel>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-file-document-outline" />
+            <MenuLabel>Reports</MenuLabel>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-clipboard-check-outline" />
+            <MenuLabel>Checklists</MenuLabel>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-currency-usd" />
+            <MenuLabel>Payments</MenuLabel>
+            <Badge size="small" color="caution">NEW</Badge>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-map-outline" />
+            <MenuLabel>Map</MenuLabel>
+          </MenuItem>
         </NavSection>
 
-        <NavSection title="Marketing">
-          <NavMenuItem icon={<Star size={18} />} label="Reviews" />
-          <NavMenuItem icon={<LayoutGrid size={18} />} label="Portfolio" />
+        <NavSection>
+          <SectionTitle>
+            <Text as="h2" size="xs" weight={700} color="default" family="heading">
+              Marketing
+            </Text>
+          </SectionTitle>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-star-outline" />
+            <MenuLabel>Reviews</MenuLabel>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-view-grid-outline" />
+            <MenuLabel>Portfolio</MenuLabel>
+          </MenuItem>
         </NavSection>
 
-        <NavSection title="Resources">
-          <NavMenuItem icon={<Puzzle size={18} />} label="Integrations" />
-          <NavMenuItem icon={<FolderOpen size={18} />} label="Templates" />
-        </NavSection>
-      </div>
+        <NavSection>
+          <SectionTitle>
+            <Text as="h2" size="s" weight={700} color="default" family="heading">
+              Resources
+            </Text>
+          </SectionTitle>
 
-      {/* Footer */}
-      <div className="border-t border-sidebar-border py-2">
-        <NavMenuItem icon={<Gift size={18} />} label="Refer, get $$$" />
-        <NavMenuItem icon={<ArrowLeftRight size={18} />} label="Switch to Org Admin" />
-        <NavMenuItem icon={<MessageCircle size={18} />} label="Chat with Support" />
-      </div>
-    </nav>
+          <MenuItem>
+            <MenuIcon className="mdi mdi-puzzle-outline" />
+            <MenuLabel>Integrations</MenuLabel>
+          </MenuItem>
+
+          <MenuItem>
+            <MenuIcon className="mdi mdi-folder-outline" />
+            <MenuLabel>Templates</MenuLabel>
+          </MenuItem>
+        </NavSection>
+      </NavContent>
+
+      <NavFooter>
+        <MenuItem>
+          <MenuIcon className="mdi mdi-gift-outline" />
+          <MenuLabel>Refer, get $$$</MenuLabel>
+        </MenuItem>
+
+        <MenuItem>
+          <MenuIcon className="mdi mdi-swap-horizontal" />
+          <MenuLabel>Switch to Org Admin</MenuLabel>
+        </MenuItem>
+
+        <MenuItem>
+          <MenuIcon className="mdi mdi-message-outline" />
+          <MenuLabel>Chat with Support</MenuLabel>
+        </MenuItem>
+      </NavFooter>
+    </NavContainer>
   );
 }
