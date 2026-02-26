@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Text, Table, TimeStamp, Button, Modal, InputText } from "@companycam/slab-web";
-import { createColumnHelper } from "@tanstack/react-table";
+import { Text, Button, Modal, InputText, InputTextArea, InputSelectHTML } from "@companycam/slab-web";
 import { Navigation } from "@/components/Navigation";
 
 const AppContainer = styled.div`
@@ -17,6 +16,11 @@ const MainContent = styled.main`
   overflow-y: auto;
 `;
 
+const FormRow = styled.div`
+  display: flex;
+  gap: var(--cc_size_spacing_m);
+`;
+
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -30,8 +34,43 @@ const Index = () => {
         <Button color="primary" onClick={() => setIsModalOpen(true)} ccMargin="0 0 l">
           Open Modal
         </Button>
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Modal" size="small">
-          <InputText id="lead-name" label="Name" placeholder="Enter a name" />
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title="Contact Information"
+          size="medium"
+          footerActions={
+            <>
+              <Button design="outline" onClick={() => setIsModalOpen(false)}>
+                Cancel
+              </Button>
+              <Button color="primary" onClick={() => setIsModalOpen(false)}>
+                Save
+              </Button>
+            </>
+          }
+        >
+          <FormRow>
+            <InputText id="first-name" label="First Name" placeholder="Enter first name" />
+            <InputText id="last-name" label="Last Name" placeholder="Enter last name" />
+          </FormRow>
+          <InputText id="email" label="Email" type="email" placeholder="Enter email address" />
+          <InputText id="phone" label="Phone" type="tel" placeholder="Enter phone number" />
+          <InputText id="company" label="Company" placeholder="Enter company name" />
+          <InputText id="job-title" label="Job Title" placeholder="Enter job title" />
+          <InputSelectHTML
+            id="contact-type"
+            label="Contact Type"
+            options={[
+              { label: "Select a type...", value: "", disabled: true },
+              { label: "Client", value: "client" },
+              { label: "Vendor", value: "vendor" },
+              { label: "Partner", value: "partner" },
+              { label: "Other", value: "other" },
+            ]}
+            defaultValue=""
+          />
+          <InputTextArea id="notes" label="Notes" placeholder="Additional notes..." />
         </Modal>
       </MainContent>
     </AppContainer>
