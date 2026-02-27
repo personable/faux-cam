@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Text, Button, ButtonIconCondensed, Badge, Table } from "@companycam/slab-web";
+import { Text, Button, ButtonIcon, ButtonIconCondensed, Badge, Table } from "@companycam/slab-web";
 import type { ColumnDef } from "@companycam/slab-web";
 import { Navigation } from "@/components/Navigation";
 
@@ -187,6 +187,24 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
       );
     },
   },
+  {
+    id: "share",
+    header: "",
+    enableSorting: false,
+    cell: () => (
+      <Button color="secondary" icon={{ name: "share-variant" }} design="outline" size="small">
+        Share
+      </Button>
+    ),
+  },
+  {
+    id: "more",
+    header: "",
+    enableSorting: false,
+    cell: () => (
+      <ButtonIcon iconName="dots-horizontal" accessibilityLabel="More options" color="subtle" />
+    ),
+  },
 ];
 
 const Project = () => {
@@ -241,7 +259,7 @@ const Project = () => {
 
         <ContentArea>
           {activeTab === "payments" ? (
-            <Table defaultData={estimateData} columns={estimateColumns} columnSizes={["fill", "fill", 150, 150]} />
+            <Table defaultData={estimateData} columns={estimateColumns} columnSizes={["fill", "fill", 150, 150, 120, 60]} />
           ) : (
             <EmptyCard>
               <Text as="h2" size="l" family="heading" weight={700}>
