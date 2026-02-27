@@ -201,9 +201,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     id: "more",
     header: "",
     enableSorting: false,
-    cell: () => (
-      <ButtonIcon iconName="dots-horizontal" accessibilityLabel="More options" color="subtle" />
-    ),
+    cell: () => <ButtonIcon iconName="dots-horizontal" accessibilityLabel="More options" color="subtle" />,
   },
 ];
 
@@ -259,7 +257,11 @@ const Project = () => {
 
         <ContentArea>
           {activeTab === "payments" ? (
-            <Table defaultData={estimateData} columns={estimateColumns} columnSizes={["fill", "fill", 150, 150, 120, 60]} />
+            <Table
+              defaultData={estimateData}
+              columns={estimateColumns}
+              columnSizes={["fill", "fill", "fill", "fill", "fill", "fill"]}
+            />
           ) : (
             <EmptyCard>
               <Text as="h2" size="l" family="heading" weight={700}>
