@@ -181,7 +181,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     cell: ({ getValue }) => {
       const status = getValue() as Estimate["status"];
       return (
-        <div>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Badge color={statusBadgeColor[status]}>{status}</Badge>
         </div>
       );
