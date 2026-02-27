@@ -151,30 +151,42 @@ const tabs = [
   { id: "reports", label: "Reports", count: 0 },
 ];
 
-type Payment = {
+type Estimate = {
   id: number;
-  description: string;
-  amount: string;
-  status: string;
-  date: string;
-  method: string;
+  title: string;
+  contact: string;
+  deposit: string;
+  status: "Unaccepted" | "Accepted" | "Declined";
 };
 
-const paymentData: Payment[] = [
-  { id: 1, description: "Initial deposit", amount: "$2,500.00", status: "Paid", date: "Jan 15, 2025", method: "Credit Card" },
-  { id: 2, description: "Framing materials", amount: "$8,750.00", status: "Paid", date: "Feb 3, 2025", method: "Bank Transfer" },
-  { id: 3, description: "Electrical rough-in", amount: "$3,200.00", status: "Paid", date: "Mar 10, 2025", method: "Check" },
-  { id: 4, description: "Plumbing fixtures", amount: "$4,100.00", status: "Pending", date: "Apr 1, 2025", method: "Credit Card" },
-  { id: 5, description: "Drywall & finishing", amount: "$5,600.00", status: "Pending", date: "Apr 22, 2025", method: "Bank Transfer" },
-  { id: 6, description: "Final walkthrough", amount: "$1,500.00", status: "Unpaid", date: "May 15, 2025", method: "—" },
+const estimateData: Estimate[] = [
+  { id: 1, title: "Kitchen Remodel", contact: "Sarah Johnson", deposit: "$2,500.00", status: "Accepted" },
+  { id: 2, title: "Bathroom Renovation", contact: "Mike Peters", deposit: "$1,200.00", status: "Accepted" },
+  { id: 3, title: "Deck Installation", contact: "Lisa Chen", deposit: "$3,000.00", status: "Unaccepted" },
+  { id: 4, title: "Roof Repair", contact: "Tom Bradley", deposit: "$800.00", status: "Declined" },
+  { id: 5, title: "Basement Finishing", contact: "Amy Foster", deposit: "$5,000.00", status: "Unaccepted" },
+  { id: 6, title: "Window Replacement", contact: "James Wright", deposit: "$1,800.00", status: "Accepted" },
 ];
 
-const paymentColumns: ColumnDef<Payment, unknown>[] = [
-  { accessorKey: "description", header: "Description", enableSorting: false },
-  { accessorKey: "amount", header: "Amount", enableSorting: false },
-  { accessorKey: "status", header: "Status", enableSorting: false },
-  { accessorKey: "date", header: "Date", enableSorting: false },
-  { accessorKey: "method", header: "Method", enableSorting: false },
+const statusBadgeColor: Record<Estimate["status"], "caution" | "success" | "destroy"> = {
+  Unaccepted: "caution",
+  Accepted: "success",
+  Declined: "destroy",
+};
+
+const estimateColumns: ColumnDef<Estimate, unknown>[] = [
+  { accessorKey: "title", header: "Title", enableSorting: false },
+  { accessorKey: "contact", header: "Contact", enableSorting: false },
+  { accessorKey: "deposit", header: "Deposit", enableSorting: false },
+  {
+    accessorKey: "status",
+    header: "Status",
+    enableSorting: false,
+    cell: ({ getValue }) => {
+      const status = getValue() as Estimate["status"];
+      return <Badge color={statusBadgeColor[status]}>{status}</Badge>;
+    },
+  },
 ];
 
 const Project = () => {
@@ -230,9 +242,9 @@ const Project = () => {
         <ContentArea>
           {activeTab === "payments" ? (
             <Table
-              defaultData={paymentData}
-              columns={paymentColumns}
-              columnSizes={["fill", 150, 120, 150, 150]}
+              defaultData={estimateData}
+              columns={estimateColumns}
+              columnSizes={["fill", "fill", 150, 150]}
             />
           ) : (
             <EmptyCard>
