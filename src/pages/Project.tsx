@@ -180,7 +180,11 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     enableSorting: false,
     cell: ({ getValue }) => {
       const status = getValue() as Estimate["status"];
-      return <Badge color={statusBadgeColor[status]}>{status}</Badge>;
+      return (
+        <div>
+          <Badge color={statusBadgeColor[status]}>{status}</Badge>
+        </div>
+      );
     },
   },
 ];
