@@ -19,8 +19,7 @@ const TopBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--cc_size_spacing_m) var(--cc_size_spacing_xl);
-  border-bottom: 1px solid var(--cc_color_border_default);
+  padding: var(--cc_size_spacing_m) var(--cc_size_spacing_l);
 `;
 
 const BackLink = styled.button`
@@ -164,11 +163,7 @@ const Project = () => {
             Projects
           </BackLink>
           <TopBarActions>
-            <ButtonIconCondensed
-              iconName="star-outline"
-              accessibilityLabel="Favorite"
-              color="subtle"
-            />
+            <ButtonIconCondensed iconName="star-outline" accessibilityLabel="Favorite" color="subtle" />
             <TopBarAction>Share</TopBarAction>
             <TopBarAction>Showcase This Project</TopBarAction>
             <TopBarAction>Request Review</TopBarAction>
@@ -194,13 +189,13 @@ const Project = () => {
 
         <TabsContainer>
           {tabs.map((tab) => (
-            <Tab
-              key={tab.id}
-              $active={activeTab === tab.id}
-              onClick={() => setActiveTab(tab.id)}
-            >
+            <Tab key={tab.id} $active={activeTab === tab.id} onClick={() => setActiveTab(tab.id)}>
               {tab.label} ({tab.count})
-              {tab.badge && <Badge size="small" iconName="flask">BETA</Badge>}
+              {tab.badge && (
+                <Badge size="small" iconName="flask">
+                  BETA
+                </Badge>
+              )}
             </Tab>
           ))}
         </TabsContainer>
