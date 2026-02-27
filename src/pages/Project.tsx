@@ -107,10 +107,10 @@ const Tab = styled.button<{ $active?: boolean }>`
   border: none;
   border-bottom: 2px solid ${({ $active }) => ($active ? "var(--cc_color_link_secondary)" : "transparent")};
   color: ${({ $active }) => ($active ? "var(--cc_color_link_secondary)" : "var(--cc_color_link_subtle)")};
-  font-weight: 600;
+  font-weight: 400;
   font-size: var(--cc_size_text_m);
   font-family: inherit;
-  padding: var(--cc_size_spacing_s) var(--cc_size_spacing_m);
+  padding: var(--cc_size_spacing_m);
   cursor: pointer;
   display: flex;
   align-items: center;
