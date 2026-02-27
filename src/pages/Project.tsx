@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Text, Button, ButtonCondensed, ButtonIconCondensed, Badge } from "@companycam/slab-web";
+import { Text, Button, ButtonIconCondensed, Badge } from "@companycam/slab-web";
 import { Navigation } from "@/components/Navigation";
 
 const AppContainer = styled.div`
@@ -22,6 +22,22 @@ const TopBar = styled.div`
   padding: var(--cc_size_spacing_m) var(--cc_size_spacing_l);
 `;
 
+const BackLink = styled.button`
+  display: flex;
+  align-items: center;
+  gap: var(--cc_size_spacing_xs);
+  background: none;
+  border: none;
+  color: var(--cc_color_text_subtle);
+  cursor: pointer;
+  font-size: var(--cc_size_text_s);
+  font-family: inherit;
+  padding: 0;
+
+  &:hover {
+    color: var(--cc_color_text_default);
+  }
+`;
 
 const TopBarActions = styled.div`
   display: flex;
@@ -89,12 +105,12 @@ const TabsContainer = styled.div`
 const Tab = styled.button<{ $active?: boolean }>`
   background: none;
   border: none;
-  border-bottom: 2px solid ${({ $active }) => ($active ? "var(--cc_color_link_default)" : "transparent")};
-  color: ${({ $active }) => ($active ? "var(--cc_color_text_default)" : "var(--cc_color_text_subtle)")};
-  font-weight: ${({ $active }) => ($active ? 700 : 400)};
-  font-size: var(--cc_size_text_s);
+  border-bottom: 2px solid ${({ $active }) => ($active ? "var(--cc_color_link_secondary)" : "transparent")};
+  color: ${({ $active }) => ($active ? "var(--cc_color_link_secondary)" : "var(--cc_color_link_subtle)")};
+  font-weight: 600;
+  font-size: var(--cc_size_text_m);
   font-family: inherit;
-  padding: var(--cc_size_spacing_m) var(--cc_size_spacing_m);
+  padding: var(--cc_size_spacing_s) var(--cc_size_spacing_m);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -102,7 +118,7 @@ const Tab = styled.button<{ $active?: boolean }>`
   white-space: nowrap;
 
   &:hover {
-    color: var(--cc_color_text_default);
+    color: var(--cc_color_link_secondary);
   }
 `;
 
@@ -142,9 +158,10 @@ const Project = () => {
       <Navigation />
       <MainContent>
         <TopBar>
-          <ButtonCondensed color="subtle" icon={{ name: "chevron-left" }}>
+          <BackLink>
+            <i className="mdi mdi-chevron-left" />
             Projects
-          </ButtonCondensed>
+          </BackLink>
           <TopBarActions>
             <ButtonIconCondensed iconName="star-outline" accessibilityLabel="Favorite" color="subtle" />
             <TopBarAction>Share</TopBarAction>
