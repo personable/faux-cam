@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Text, Button, ButtonIconCondensed, Badge } from "@companycam/slab-web";
+import { Text, Button, ButtonIconCondensed, Badge, Table } from "@companycam/slab-web";
+import type { ColumnDef } from "@companycam/slab-web";
 import { Navigation } from "@/components/Navigation";
 
 const AppContainer = styled.div`
@@ -150,6 +151,32 @@ const tabs = [
   { id: "reports", label: "Reports", count: 0 },
 ];
 
+type Payment = {
+  id: number;
+  description: string;
+  amount: string;
+  status: string;
+  date: string;
+  method: string;
+};
+
+const paymentData: Payment[] = [
+  { id: 1, description: "Initial deposit", amount: "$2,500.00", status: "Paid", date: "Jan 15, 2025", method: "Credit Card" },
+  { id: 2, description: "Framing materials", amount: "$8,750.00", status: "Paid", date: "Feb 3, 2025", method: "Bank Transfer" },
+  { id: 3, description: "Electrical rough-in", amount: "$3,200.00", status: "Paid", date: "Mar 10, 2025", method: "Check" },
+  { id: 4, description: "Plumbing fixtures", amount: "$4,100.00", status: "Pending", date: "Apr 1, 2025", method: "Credit Card" },
+  { id: 5, description: "Drywall & finishing", amount: "$5,600.00", status: "Pending", date: "Apr 22, 2025", method: "Bank Transfer" },
+  { id: 6, description: "Final walkthrough", amount: "$1,500.00", status: "Unpaid", date: "May 15, 2025", method: "—" },
+];
+
+const paymentColumns: ColumnDef<Payment, unknown>[] = [
+  { accessorKey: "description", header: "Description", enableSorting: false },
+  { accessorKey: "amount", header: "Amount", enableSorting: false },
+  { accessorKey: "status", header: "Status", enableSorting: false },
+  { accessorKey: "date", header: "Date", enableSorting: false },
+  { accessorKey: "method", header: "Method", enableSorting: false },
+];
+
 const Project = () => {
   const [activeTab, setActiveTab] = useState("payments");
 
@@ -201,20 +228,28 @@ const Project = () => {
         </TabsContainer>
 
         <ContentArea>
-          <EmptyCard>
-            <Text as="h2" size="l" family="heading" weight={700}>
-              Start taking pictures in the mobile app.
-            </Text>
-            <Text as="p" size="s" color="subtle">
-              All photos and videos taken by your team will appear here, instantly.
-            </Text>
-            <Button color="primary" icon={{ name: "plus-circle-outline" }} ccMargin="s 0 0">
-              Upload Photos
-            </Button>
-            <Button design="outline" icon={{ name: "account-multiple-outline" }}>
-              Assign Users
-            </Button>
-          </EmptyCard>
+          {activeTab === "payments" ? (
+            <Table
+              defaultData={paymentData}
+              columns={paymentColumns}
+              columnSizes={["fill", 150, 120, 150, 150]}
+            />
+          ) : (
+            <EmptyCard>
+              <Text as="h2" size="l" family="heading" weight={700}>
+                Start taking pictures in the mobile app.
+              </Text>
+              <Text as="p" size="s" color="subtle">
+                All photos and videos taken by your team will appear here, instantly.
+              </Text>
+              <Button color="primary" icon={{ name: "plus-circle-outline" }} ccMargin="s 0 0">
+                Upload Photos
+              </Button>
+              <Button design="outline" icon={{ name: "account-multiple-outline" }}>
+                Assign Users
+              </Button>
+            </EmptyCard>
+          )}
         </ContentArea>
       </MainContent>
     </AppContainer>
