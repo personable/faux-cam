@@ -96,7 +96,7 @@ const AddLabelsButton = styled.button`
 const TabsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: var(--cc_size_spacing_m);
   padding: 0 var(--cc_size_spacing_xl);
   margin-top: var(--cc_size_spacing_l);
   border-bottom: 1px solid var(--cc_color_border_default);
@@ -110,7 +110,7 @@ const Tab = styled.button<{ $active?: boolean }>`
   font-weight: 400;
   font-size: var(--cc_size_text_m);
   font-family: inherit;
-  padding: var(--cc_size_spacing_m);
+  padding: var(--cc_size_spacing_m) 0;
   cursor: pointer;
   display: flex;
   align-items: center;
