@@ -162,10 +162,6 @@ type Estimate = {
 const estimateData: Estimate[] = [
   { id: 1, title: "Kitchen Remodel", contact: "Sarah Johnson", deposit: "$2,500.00", status: "Accepted" },
   { id: 2, title: "Bathroom Renovation", contact: "Mike Peters", deposit: "$1,200.00", status: "Accepted" },
-  { id: 3, title: "Deck Installation", contact: "Lisa Chen", deposit: "$3,000.00", status: "Unaccepted" },
-  { id: 4, title: "Roof Repair", contact: "Tom Bradley", deposit: "$800.00", status: "Declined" },
-  { id: 5, title: "Basement Finishing", contact: "Amy Foster", deposit: "$5,000.00", status: "Unaccepted" },
-  { id: 6, title: "Window Replacement", contact: "James Wright", deposit: "$1,800.00", status: "Accepted" },
 ];
 
 const statusBadgeColor: Record<Estimate["status"], "caution" | "success" | "destroy"> = {
@@ -241,11 +237,7 @@ const Project = () => {
 
         <ContentArea>
           {activeTab === "payments" ? (
-            <Table
-              defaultData={estimateData}
-              columns={estimateColumns}
-              columnSizes={["fill", "fill", 150, 150]}
-            />
+            <Table defaultData={estimateData} columns={estimateColumns} columnSizes={["fill", "fill", 150, 150]} />
           ) : (
             <EmptyCard>
               <Text as="h2" size="l" family="heading" weight={700}>
