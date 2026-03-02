@@ -176,7 +176,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <ButtonCondensed color="secondary" onClick={() => alert('open proposal!')}>
           Share
-        </Button>
+        </ButtonCondensed>
       </div>
     ),},
   { accessorKey: "deposit", header: "Deposit", enableSorting: false },
