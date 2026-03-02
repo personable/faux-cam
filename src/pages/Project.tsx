@@ -187,9 +187,11 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     header: "",
     enableSorting: false,
     cell: () => (
-      <Button color="secondary" icon={{ name: "share", position: "after" }} design="outline" size="small">
-        Share
-      </Button>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button color="secondary" icon={{ name: "share", position: "after" }} design="outline" size="small">
+          Share
+        </Button>
+      </div>
     ),
   },
   {
