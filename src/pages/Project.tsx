@@ -180,11 +180,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     enableSorting: false,
     cell: ({ getValue }) => {
       const status = getValue() as Estimate["status"];
-      return (
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Badge color={statusBadgeColor[status]}>{status}</Badge>
-        </div>
-      );
+      return <Badge color={statusBadgeColor[status]}>{status}</Badge>;
     },
   },
   {
@@ -267,7 +263,7 @@ const Project = () => {
             <Table
               defaultData={estimateData}
               columns={estimateColumns}
-              columnSizes={["fill", "fill", "fill", "fill", 100, 50]}
+              columnSizes={["fill", "fill", "fill", "fill", 150, 50]}
             />
           ) : (
             <EmptyCard>
