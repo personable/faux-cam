@@ -287,7 +287,7 @@ const Project = () => {
             <>
               <SectionHeading>
                 <IconContainer>
-                  <Icon className="mdi mdi-pencil" aria-hidden="true" />
+                  <Icon className="mdi mdi-calculator" aria-hidden="true" />
                 </IconContainer>
                 <Text as="h2" family="heading" size="l" weight={700}>
                   Proposals
