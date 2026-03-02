@@ -162,6 +162,10 @@ const Icon = styled.i`
   font-size: var(--cc_size_text_l);
 `;
 
+const TableContainer = styled.div`
+  padding-inline-start: var(--cc_size_spacing_l);
+`;
+
 const tabs = [
   { id: "photos", label: "Photos", count: 0 },
   { id: "activity", label: "Activity", count: 0, badge: true },
@@ -293,12 +297,13 @@ const Project = () => {
                   Proposals
                 </Text>
               </SectionHeading>
-
-              <Table
-                defaultData={estimateData}
-                columns={estimateColumns}
-                columnSizes={["fill", "fill", "fill", "fill", 50]}
-              />
+              <TableContainer>
+                <Table
+                  defaultData={estimateData}
+                  columns={estimateColumns}
+                  columnSizes={["fill", "fill", "fill", "fill", 50]}
+                />
+              </TableContainer>
             </>
           ) : (
             <EmptyCard>
