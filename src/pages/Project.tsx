@@ -163,7 +163,7 @@ const Icon = styled.i`
 `;
 
 const TableContainer = styled.div`
-  padding-inline-start: var(--cc_size_spacing_xl);
+  padding-inline-start: var(--cc_size_spacing_xxl);
 `;
 
 const tabs = [
