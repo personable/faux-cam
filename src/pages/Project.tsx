@@ -302,7 +302,7 @@ const Project = () => {
                 />
               </TableContainer>
 
-              <SectionHeading>
+              <SectionHeading style={{ marginBlockStart: "var(--cc_size_spacing_xl)" }}>
                 <IconContainer>
                   <Icon className="mdi mdi-currency-usd" aria-hidden="true" />
                 </IconContainer>
