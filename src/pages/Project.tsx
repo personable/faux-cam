@@ -217,22 +217,17 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     },
   },
   {
-    id: "share",
-    header: "",
-    enableSorting: false,
-    cell: () => (
-      <div style={{ display: "flex", justifyContent: "flex-start" }}>
-        <Button color="secondary" icon={{ name: "share", position: "after" }} design="outline" size="small">
-          Share
-        </Button>
-      </div>
-    ),
-  },
-  {
     id: "more",
     header: "",
     enableSorting: false,
-    cell: () => <ButtonIconCondensed iconName="dots-horizontal" accessibilityLabel="More options" color="subtle" />,
+    cell: () => (
+      <div style={{ display: "flex", alignItems: "center", gap: "var(--cc_size_spacing_s)" }}>
+        <Button color="secondary" icon={{ name: "share", position: "after" }} design="outline" size="small">
+          Share
+        </Button>
+        <ButtonIconCondensed iconName="dots-horizontal" accessibilityLabel="More options" color="subtle" />
+      </div>
+    ),
   },
 ];
 
@@ -301,7 +296,7 @@ const Project = () => {
                 <Table
                   defaultData={estimateData}
                   columns={estimateColumns}
-                  columnSizes={["fill", "fill", "fill", "fill", 50]}
+                  columnSizes={["fill", "fill", "fill", "fill"]}
                 />
               </TableContainer>
             </>
