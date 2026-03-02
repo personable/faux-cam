@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Text, Button, ButtonIcon, ButtonIconCondensed, Badge, Table } from "@companycam/slab-web";
+import { Text, Button, ButtonCondensed, ButtonIcon, ButtonIconCondensed, Badge, Table } from "@companycam/slab-web";
 import type { ColumnDef } from "@companycam/slab-web";
 import { Navigation } from "@/components/Navigation";
 
@@ -171,7 +171,14 @@ const statusBadgeColor: Record<Estimate["status"], "caution" | "success" | "dest
 };
 
 const estimateColumns: ColumnDef<Estimate, unknown>[] = [
-  { accessorKey: "title", header: "Title", enableSorting: false },
+  { accessorKey: "title", header: "Title", enableSorting: false,
+  cell: () => (
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <ButtonCondensed color="secondary" onClick={() => alert('open proposal!')}>
+          Share
+        </Button>
+      </div>
+    ),},
   { accessorKey: "deposit", header: "Deposit", enableSorting: false },
   {
     accessorKey: "status",
