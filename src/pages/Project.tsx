@@ -301,6 +301,22 @@ const Project = () => {
                   columnSizes={["fill", "fill", "fill", "fill"]}
                 />
               </TableContainer>
+
+              <SectionHeading>
+                <IconContainer>
+                  <Icon className="mdi mdi-currency-usd" aria-hidden="true" />
+                </IconContainer>
+                <Text as="h2" family="heading" size="l" weight={700}>
+                  Payment Requests
+                </Text>
+              </SectionHeading>
+              <TableContainer>
+                <Table
+                  defaultData={estimateData}
+                  columns={estimateColumns}
+                  columnSizes={["fill", "fill", "fill", "fill"]}
+                />
+              </TableContainer>
             </>
           ) : (
             <EmptyCard>
