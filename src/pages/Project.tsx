@@ -184,22 +184,41 @@ type Estimate = {
   status: "Unaccepted" | "Accepted" | "Declined";
 };
 
+type Estimate2 = {
+  id: number;
+  title: string;
+  contact: string;
+  deposit: string;
+  status: "Outstanding" | "Paid";
+};
+
 const estimateData: Estimate[] = [
   {
-    id: 1,
     title: "Kitchen Remodel",
-    contact: "Sarah Johnson",
     id: "PRO-123",
-    deposit: "$2,500.00",
+    deposit: "$2,500",
     status: "Accepted",
   },
   {
-    id: 2,
     title: "Bathroom Renovation",
     id: "PRO-124",
-    contact: "Mike Peters",
-    deposit: "$1,200.00",
+    deposit: "$1,200",
     status: "Accepted",
+  },
+];
+
+const estimateData2: Estimate[] = [
+  {
+    title: "Security Deposit",
+    id: "PAY-123",
+    deposit: "$200",
+    status: "Outstanding",
+  },
+  {
+    title: "Bathroom Renovation",
+    id: "PAY-124",
+    deposit: "$140",
+    status: "Paid",
   },
 ];
 
@@ -228,6 +247,45 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     enableSorting: false,
     cell: ({ getValue }) => {
       const status = getValue() as Estimate["status"];
+      return <Badge color={statusBadgeColor[status]}>{status}</Badge>;
+    },
+  },
+  {
+    id: "more",
+    header: "",
+    enableSorting: false,
+    cell: () => (
+      <div
+        style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "var(--cc_size_spacing_m)" }}
+      >
+        <Button color="secondary" icon={{ name: "share", position: "after" }} design="outline" size="small">
+          Share
+        </Button>
+        <ButtonIconCondensed iconName="dots-horizontal" accessibilityLabel="More options" color="subtle" />
+      </div>
+    ),
+  },
+];
+
+const estimateColumns2: ColumnDef<Estimate, unknown>[] = [
+  {
+    accessorKey: "title",
+    header: "Title",
+    enableSorting: false,
+    cell: () => (
+      <ButtonCondensed color="secondary" onClick={() => alert("open payment!")}>
+        Security Deposit
+      </ButtonCondensed>
+    ),
+  },
+  { accessorKey: "id", header: "ID", enableSorting: false },
+  { accessorKey: "deposit", header: "Deposit", enableSorting: false },
+  {
+    accessorKey: "status",
+    header: "Status",
+    enableSorting: false,
+    cell: ({ getValue }) => {
+      const status = getValue() as Estimate2["status"];
       return <Badge color={statusBadgeColor[status]}>{status}</Badge>;
     },
   },
@@ -327,8 +385,8 @@ const Project = () => {
               </SectionHeading>
               <TableContainer>
                 <Table
-                  defaultData={estimateData}
-                  columns={estimateColumns}
+                  defaultData={estimateData2}
+                  columns={estimateColumns2}
                   columnSizes={["fill", "fill", "fill", "fill", "fill"]}
                 />
               </TableContainer>
