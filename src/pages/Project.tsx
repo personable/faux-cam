@@ -202,7 +202,12 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     header: "",
     enableSorting: false,
     cell: () => (
-      <ButtonIcon iconName="dots-horizontal" design="minimal" accessibilityLabel="More options" color="subtle" />
+      <ButtonIconCondensed
+        iconName="dots-horizontal"
+        design="minimal"
+        accessibilityLabel="More options"
+        color="subtle"
+      />
     ),
   },
 ];
