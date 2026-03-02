@@ -201,7 +201,6 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     cell: () => (
       <ButtonIconCondensed
         iconName="dots-horizontal"
-        design="minimal"
         accessibilityLabel="More options"
         color="subtle"
       />
