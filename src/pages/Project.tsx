@@ -172,7 +172,6 @@ const statusBadgeColor: Record<Estimate["status"], "caution" | "success" | "dest
 
 const estimateColumns: ColumnDef<Estimate, unknown>[] = [
   { accessorKey: "title", header: "Title", enableSorting: false },
-  { accessorKey: "contact", header: "Contact", enableSorting: false },
   { accessorKey: "deposit", header: "Deposit", enableSorting: false },
   {
     accessorKey: "status",
