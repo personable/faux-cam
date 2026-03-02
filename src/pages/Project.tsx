@@ -145,7 +145,7 @@ const SectionHeading = styled.div`
   display: flex;
   align-items: center;
   gap: var(--cc_size_spacing_m);
-  margin-block-end: var(--cc_size_spacing_m);
+  margin-bottom: var(--cc_size_spacing_m);
 `;
 
 const IconContainer = styled.span`
