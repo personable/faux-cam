@@ -228,6 +228,11 @@ const statusBadgeColor: Record<Estimate["status"], "caution" | "success" | "dest
   Declined: "destroy",
 };
 
+const statusBadgeColor2: Record<Estimate["status"], "caution" | "success" | "destroy"> = {
+  Outstanding: "caution",
+  Paid: "success",
+};
+
 const estimateColumns: ColumnDef<Estimate, unknown>[] = [
   {
     accessorKey: "title",
@@ -286,7 +291,11 @@ const estimateColumns2: ColumnDef<Estimate, unknown>[] = [
     enableSorting: false,
     cell: ({ getValue }) => {
       const status = getValue() as Estimate2["status"];
-      return <Badge color={statusBadgeColor[status]}>{status}</Badge>;
+      return (
+        <div style={{ height: 24 }}>
+          <Badge color={statusBadgeColor[status]}>{status}</Badge>
+        </div>
+      );
     },
   },
   {
