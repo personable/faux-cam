@@ -262,7 +262,7 @@ const Project = () => {
             <Table
               defaultData={estimateData}
               columns={estimateColumns}
-              columnSizes={["fill", "fill", "fill", "fill", 150, 50]}
+              columnSizes={["fill", "fill", "fill", "fill", "fill", 50]}
             />
           ) : (
             <EmptyCard>
