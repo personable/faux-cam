@@ -192,7 +192,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     header: "",
     enableSorting: false,
     cell: () => (
-      <Button color="secondary" icon={{ name: "share-variant", position: "after" }} design="outline" size="small">
+      <Button color="secondary" icon={{ name: "share", position: "after" }} design="outline" size="small">
         Share
       </Button>
     ),
@@ -267,7 +267,7 @@ const Project = () => {
             <Table
               defaultData={estimateData}
               columns={estimateColumns}
-              columnSizes={["fill", "fill", "fill", "fill", "fill", 100]}
+              columnSizes={["fill", "fill", "fill", "fill", 100, 50]}
             />
           ) : (
             <EmptyCard>
