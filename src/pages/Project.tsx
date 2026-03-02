@@ -177,28 +177,22 @@ const tabs = [
 ];
 
 type Estimate = {
-  id: string;
+  id: number;
   title: string;
-  contact?: string;
+  contact: string;
   deposit: string;
   status: "Unaccepted" | "Accepted" | "Declined";
 };
 
 type Estimate2 = {
-  id: string;
+  id: number;
   title: string;
-  contact?: string;
+  contact: string;
   deposit: string;
   status: "Outstanding" | "Paid";
 };
 
 const estimateData: Estimate[] = [
-  {
-    title: "Kitchen Remodel",
-    id: "PRO-123",
-    deposit: "$2,500",
-    status: "Accepted",
-  },
   {
     title: "Bathroom Renovation",
     id: "PRO-124",
@@ -207,7 +201,7 @@ const estimateData: Estimate[] = [
   },
 ];
 
-const estimateData2: Estimate2[] = [
+const estimateData2: Estimate[] = [
   {
     title: "Security Deposit",
     id: "PAY-123",
@@ -228,7 +222,7 @@ const statusBadgeColor: Record<Estimate["status"], "caution" | "success" | "dest
   Declined: "destroy",
 };
 
-const statusBadgeColor2: Record<Estimate2["status"], "caution" | "success"> = {
+const statusBadgeColor2: Record<Estimate["status"], "caution" | "success" | "destroy"> = {
   Outstanding: "caution",
   Paid: "success",
 };
@@ -272,7 +266,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
   },
 ];
 
-const estimateColumns2: ColumnDef<Estimate2, unknown>[] = [
+const estimateColumns2: ColumnDef<Estimate, unknown>[] = [
   {
     accessorKey: "title",
     header: "Title",
@@ -291,7 +285,7 @@ const estimateColumns2: ColumnDef<Estimate2, unknown>[] = [
     enableSorting: false,
     cell: ({ getValue }) => {
       const status = getValue() as Estimate2["status"];
-      return <Badge color={statusBadgeColor2[status]}>{status}</Badge>;
+      return <Badge color={statusBadgeColor[status]}>{status}</Badge>;
     },
   },
   {
