@@ -177,7 +177,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     enableSorting: false,
     cell: () => (
       <ButtonCondensed color="secondary" onClick={() => alert("open proposal!")}>
-        Share
+        Proposal #123
       </ButtonCondensed>
     ),
   },
