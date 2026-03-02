@@ -185,8 +185,22 @@ type Estimate = {
 };
 
 const estimateData: Estimate[] = [
-  { id: 1, title: "Kitchen Remodel", contact: "Sarah Johnson", deposit: "$2,500.00", status: "Accepted" },
-  { id: 2, title: "Bathroom Renovation", contact: "Mike Peters", deposit: "$1,200.00", status: "Accepted" },
+  {
+    id: 1,
+    title: "Kitchen Remodel",
+    contact: "Sarah Johnson",
+    id: "PRO-123",
+    deposit: "$2,500.00",
+    status: "Accepted",
+  },
+  {
+    id: 2,
+    title: "Bathroom Renovation",
+    id: "PRO-124",
+    contact: "Mike Peters",
+    deposit: "$1,200.00",
+    status: "Accepted",
+  },
 ];
 
 const statusBadgeColor: Record<Estimate["status"], "caution" | "success" | "destroy"> = {
@@ -206,6 +220,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
       </ButtonCondensed>
     ),
   },
+  { accessorKey: "id", header: "ID", enableSorting: false },
   { accessorKey: "deposit", header: "Deposit", enableSorting: false },
   {
     accessorKey: "status",
@@ -298,7 +313,7 @@ const Project = () => {
                 <Table
                   defaultData={estimateData}
                   columns={estimateColumns}
-                  columnSizes={["fill", "fill", "fill", "fill"]}
+                  columnSizes={["fill", "fill", "fill", "fill", "fill"]}
                 />
               </TableContainer>
 
@@ -314,7 +329,7 @@ const Project = () => {
                 <Table
                   defaultData={estimateData}
                   columns={estimateColumns}
-                  columnSizes={["fill", "fill", "fill", "fill"]}
+                  columnSizes={["fill", "fill", "fill", "fill", "fill"]}
                 />
               </TableContainer>
             </>
