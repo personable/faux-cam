@@ -144,7 +144,7 @@ const EmptyCard = styled.div`
 const SectionHeading = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--cc_size_spacing_m);
+  gap: var(--cc_size_spacing_s);
   margin-bottom: var(--cc_size_spacing_m);
 `;
 
@@ -159,7 +159,7 @@ const IconContainer = styled.span`
 
 const Icon = styled.i`
   color: var(--cc_color_text_subtle);
-  font-size: var(--cc_size_text_m);
+  font-size: var(--cc_size_text_l);
 `;
 
 const tabs = [
