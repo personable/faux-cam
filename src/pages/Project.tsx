@@ -142,8 +142,8 @@ const EmptyCard = styled.div`
 `;
 
 const IconContainer = styled.span`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: inline-grid;
   place-items: center;
   background-color: var(--cc_color_background_3);
@@ -152,6 +152,7 @@ const IconContainer = styled.span`
 
 const Icon = styled.i`
   color: var(--cc_color_text_subtle);
+  font-size: var(--cc_size_text_l);
 `;
 
 const tabs = [
