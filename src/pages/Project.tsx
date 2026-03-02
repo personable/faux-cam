@@ -263,6 +263,7 @@ const Project = () => {
 
         <ContentArea>
           {activeTab === "payments" ? (
+            <Text as="h2" family="heading" size="xl" weight={700}>Proposals</Text>
             <Table
               defaultData={estimateData}
               columns={estimateColumns}
