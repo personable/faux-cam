@@ -144,7 +144,7 @@ const EmptyCard = styled.div`
 const SectionHeading = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--cc_size_spacing_s);
+  gap: calc(var(--cc_size_spacing_s) * 1.25);
   margin-bottom: var(--cc_size_spacing_m);
 `;
 
