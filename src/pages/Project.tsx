@@ -221,7 +221,9 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     header: "",
     enableSorting: false,
     cell: () => (
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--cc_size_spacing_s)" }}>
+      <div
+        style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "var(--cc_size_spacing_m)" }}
+      >
         <Button color="secondary" icon={{ name: "share", position: "after" }} design="outline" size="small">
           Share
         </Button>
