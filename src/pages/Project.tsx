@@ -171,14 +171,16 @@ const statusBadgeColor: Record<Estimate["status"], "caution" | "success" | "dest
 };
 
 const estimateColumns: ColumnDef<Estimate, unknown>[] = [
-  { accessorKey: "title", header: "Title", enableSorting: false,
-  cell: () => (
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <ButtonCondensed color="secondary" onClick={() => alert('open proposal!')}>
-          Share
-        </ButtonCondensed>
-      </div>
-    ),},
+  {
+    accessorKey: "title",
+    header: "Title",
+    enableSorting: false,
+    cell: () => (
+      <ButtonCondensed color="secondary" onClick={() => alert("open proposal!")}>
+        Share
+      </ButtonCondensed>
+    ),
+  },
   { accessorKey: "deposit", header: "Deposit", enableSorting: false },
   {
     accessorKey: "status",
@@ -205,13 +207,7 @@ const estimateColumns: ColumnDef<Estimate, unknown>[] = [
     id: "more",
     header: "",
     enableSorting: false,
-    cell: () => (
-      <ButtonIconCondensed
-        iconName="dots-horizontal"
-        accessibilityLabel="More options"
-        color="subtle"
-      />
-    ),
+    cell: () => <ButtonIconCondensed iconName="dots-horizontal" accessibilityLabel="More options" color="subtle" />,
   },
 ];
 
