@@ -141,6 +141,19 @@ const EmptyCard = styled.div`
   gap: var(--cc_size_spacing_m);
 `;
 
+const IconContainer = styled.span`
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  background-color: var(--cc_color_background_3)
+  border-radius: var(--cc_size_border_radius_l);
+`;
+
+const Icon = styled.i`
+  color: var(--cc_color_text_subtle);
+`;
+
 const tabs = [
   { id: "photos", label: "Photos", count: 0 },
   { id: "activity", label: "Activity", count: 0, badge: true },
@@ -264,9 +277,15 @@ const Project = () => {
         <ContentArea>
           {activeTab === "payments" ? (
             <>
-              <Text as="h2" family="heading" size="l" weight={700} ccMargin="none none m">
-                Proposals
-              </Text>
+              <div>
+                <IconContainer>
+                  <Icon className="mdi mdi-pencil" aria-hidden="true" />
+                </IconContainer>
+                <Text as="h2" family="heading" size="l" weight={700} ccMargin="none none m">
+                  Proposals
+                </Text>
+              </div>
+
               <Table
                 defaultData={estimateData}
                 columns={estimateColumns}
