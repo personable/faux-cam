@@ -264,7 +264,7 @@ const Project = () => {
         <ContentArea>
           {activeTab === "payments" ? (
             <>
-              <Text as="h2" family="heading" size="xl" weight={700}>
+              <Text as="h2" family="heading" size="xl" weight={700} ccMargin="none none m">
                 Proposals
               </Text>
               <Table
