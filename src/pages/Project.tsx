@@ -146,7 +146,7 @@ const IconContainer = styled.span`
   height: 40px;
   display: inline-grid;
   place-items: center;
-  background-color: var(--cc_color_background_3)
+  background-color: var(--cc_color_background_3);
   border-radius: var(--cc_size_border_radius_l);
 `;
 
